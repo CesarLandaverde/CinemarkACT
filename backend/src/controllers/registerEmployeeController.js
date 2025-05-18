@@ -10,12 +10,12 @@ registerEmployeeController.registerEmployee = async (req, res) => {
     const { name, email, password, phone, address, position, hire_date, salary, dui } = req.body;
 
     try {
-        // Check if the employee already exists
+        // Chequear si el empleado ya existe
         let existingEmployee;
         try {
             existingEmployee = await EmployeeModel.findOne({ email });
-        } catch (err) {
-            console.error(err);
+        } catch (error) {
+            console.error(error);
             return res.status(500).json({ message: 'Error al buscar empleado existente' });
         }
         if (existingEmployee) {
@@ -26,8 +26,8 @@ registerEmployeeController.registerEmployee = async (req, res) => {
         let hashedPassword;
         try {
             hashedPassword = await bcrypt.hash(password, 10);
-        } catch (err) {
-            console.error(err);
+        } catch (error) {
+            console.error(error);
             return res.status(500).json({ message: 'Error al encriptar la contraseña' });
         }
 
@@ -46,8 +46,8 @@ registerEmployeeController.registerEmployee = async (req, res) => {
 
         try {
             await newEmployee.save();
-        } catch (err) {
-            console.error(err);
+        } catch (error) {
+            console.error(error);
             return res.status(500).json({ message: 'Error al guardar el empleado' });
         }
 
@@ -55,8 +55,8 @@ registerEmployeeController.registerEmployee = async (req, res) => {
         let token;
         try {
             token = jwt.sign({ id: newEmployee._id }, config.JWT.secret, { expiresIn: config.JWT.expires });
-        } catch (err) {
-            console.error(err);
+        } catch (error) {
+            console.error(error);
             return res.status(500).json({ message: 'Error al generar el token' });
         }
 

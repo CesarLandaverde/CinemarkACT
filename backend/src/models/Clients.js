@@ -11,8 +11,7 @@ DUI String Este campo puede ser nulo
 
 */ 
 
-
-import { Schema,Model } from "mongoose";
+import { Schema,model } from "mongoose";
 
 const clientSchema = new Schema({
     name:{
@@ -56,4 +55,5 @@ const clientSchema = new Schema({
 
 });
 
-export default Model('Client',clientSchema);
+const Clients = model('Clients',clientSchema);
+export default Clients;

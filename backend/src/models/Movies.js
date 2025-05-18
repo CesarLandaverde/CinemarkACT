@@ -58,6 +58,6 @@ const movieSchema = new Schema({
     timestamps: true,
     strict: false,
 });
+const MovieModel = model('Movie', movieSchema);
 
-export default model('Movie', movieSchema);
-
+export default MovieModel;

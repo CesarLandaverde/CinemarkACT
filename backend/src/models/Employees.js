@@ -72,4 +72,5 @@ const employeeSchema = new Schema({
     strict: false,
 });
 
-export default model('Employee', employeeSchema);
+const Employeemodel = model('Employee', employeeSchema);
+export default Employeemodel;
